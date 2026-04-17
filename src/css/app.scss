@@ -1,0 +1,18 @@
+// app global css
+/* Couleur 1 : Très sombre, presque noir/bleu nuit (Pour le Hero et les Projets) */
+.bg-section-darker {
+  background-color: #0B0E14; 
+}
+
+/* Couleur 2 : Légèrement plus "claire" / grisée (Pour About et Contact) */
+.bg-section-lighter {
+  background-color: #131821; 
+}
+
+/* Base pour toutes les sections */
+.portfolio-section {
+  width: 100%;
+  min-height: 100vh;
+  /* padding très important pour respirer, mais ZERO margin ! */
+  padding: 100px 5%; 
+}
