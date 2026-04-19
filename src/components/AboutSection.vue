@@ -118,10 +118,6 @@ interface TechCategory {
   skills: TechSkill[];
 }
 
-// =========================================================================
-// DONNÉES DE LA STACK TECHNIQUE
-// C'est ici que tu peux facilement modifier/ajouter tes technos !
-// =========================================================================
 const techStack = ref<TechCategory[]>([
   {
     title: 'Architecture Backend & API',
@@ -157,7 +153,6 @@ const techStack = ref<TechCategory[]>([
 ])
 
 onMounted(() => {
-  // Animation d'apparition au scroll pour la section "About"
   const observer = new IntersectionObserver((entries) => {
     let delay = 0;
     entries.forEach((entry) => {
@@ -202,35 +197,30 @@ onMounted(() => {
   opacity: 0;
 }
 
-/* Grille Bento pour les compétences */
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px;
 }
 
-/* Style des cartes de compétences */
 .skill-category {
-  /* On ajoute une bordure très fine et un fond semi-transparent */
   background: rgba(255, 255, 255, 0.01);
   border: 1px solid rgba(255, 255, 255, 0.03);
-  border-left: 3px solid #7C3AED; /* Ta barre violette actuelle */
+  border-left: 3px solid #7C3AED;
 
   padding: 16px 20px;
   border-radius: 4px 12px 12px 4px;
 
-  /* Ombre portée très diffuse pour la profondeur */
   box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
 
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .skill-category:hover {
-  background: rgba(124, 58, 237, 0.04); /* Légère teinte violette au survol */
+  background: rgba(124, 58, 237, 0.04);
   transform: translateX(8px);
   border-color: rgba(124, 58, 237, 0.2);
 }
 
-/* Style des accordéons Soft Skills */
 .soft-skills-list {
   border-color: rgba(255, 255, 255, 0.08);
   background: rgba(0,0,0,0.2) !important;

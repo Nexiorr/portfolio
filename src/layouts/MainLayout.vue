@@ -98,7 +98,6 @@ const toggleLeftDrawer = () => {
   leftDrawerOpen.value = !leftDrawerOpen.value
 }
 
-// 1. Fonction pour faire défiler la page quand on clique sur le menu
 const scrollTo = (sectionId: string) => {
   activeSection.value = sectionId
   const element = document.getElementById(sectionId)
@@ -107,33 +106,28 @@ const scrollTo = (sectionId: string) => {
   }
 }
 
-// 2. Écouter le scroll de l'utilisateur pour mettre à jour le menu actif
 const updateActiveSection = (event: CustomEvent) => {
   activeSection.value = event.detail
 }
 
 onMounted(() => {
-  // On écoute l'événement envoyé par IndexPage.vue
   window.addEventListener('section-changed', updateActiveSection as EventListener)
 })
 
 onUnmounted(() => {
-  // Toujours nettoyer les écouteurs d'événements
   window.removeEventListener('section-changed', updateActiveSection as EventListener)
 })
 </script>
 
 <style>
-/* Les couleurs exactes de ton screenshot */
 .bg-primary-dark {
-  background-color: #0B0E14; /* Couleur de fond principale */
+  background-color: #0B0E14;
 }
 .bg-sidebar {
-  background-color: #05070A; /* Couleur de la sidebar (légèrement plus foncée) */
-  border-right: 1px solid rgba(255, 255, 255, 0.05); /* Petite bordure discrète */
+  background-color: #05070A;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Style des liens du menu */
 .nav-item {
   color: #8A92A3;
   transition: all 0.3s ease;
@@ -143,10 +137,9 @@ onUnmounted(() => {
   color: #FFFFFF;
 }
 
-/* Le style du bouton actif (Le bleu/violet de "Home" sur ton screen) */
 .active-nav-item {
-  background: rgba(124, 58, 237, 0.15) !important; /* Fond violet très transparent */
+  background: rgba(124, 58, 237, 0.15) !important;
   color: #FFFFFF !important;
-  border-left: 3px solid #7C3AED; /* La petite barre de sélection à gauche */
+  border-left: 3px solid #7C3AED;
 }
 </style>

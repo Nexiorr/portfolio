@@ -35,7 +35,6 @@ import { onMounted } from 'vue'
 import { animate, stagger } from 'motion'
 
 onMounted(() => {
-  // Animation d'apparition en cascade (plus propre que l'ancien code)
   animate(
     ".reveal-item",
     { opacity: [0, 1], y: [30, 0] },
@@ -45,11 +44,9 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* 1. L'EFFET "VAGRANT" (Le halo subtil) */
 .hero-glow {
   min-height: 100vh;
   width: 100%;
-  /* Un halo violet très transparent centré à gauche, qui fond vers le noir profond */
   background: radial-gradient(circle at 20% 70%, rgba(124, 58, 237, 0.08) 0%, #0B0E14 60%);
   padding-top: 10vh;
 }
@@ -60,23 +57,10 @@ onMounted(() => {
   margin-left: 16%;
 }
 
-/* Le texte violet */
 .text-purple-accent {
-  color: #8B5CF6; /* Violet moderne */
+  color: #8B5CF6;
 }
 
-/* Le style du badge */
-.badge-available {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 8px 20px;
-  border-radius: 30px;
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.95rem;
-}
-
-/* Le bouton principal */
 .btn-purple {
   background-color: #7C3AED;
   color: white;

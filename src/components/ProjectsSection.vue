@@ -228,7 +228,6 @@ const categories = ['All', 'Web', 'Mobile', 'Logiciel', 'Machine Learning'];
 const detailsOpen = ref(false);
 const selectedProject = ref<Project | null>(null);
 
-// Données
 const projects = ref<Project[]>([
   {
     id: 1,
@@ -393,7 +392,6 @@ const openDetails = (project: Project) => {
 };
 
 onMounted(() => {
-  // Animation au scroll
   const observer = new IntersectionObserver(
     (entries) => {
       let delay = 0;
@@ -419,9 +417,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* ========================================================== */
-/* ALIGNEMENT ET TYPOGRAPHIE                                  */
-/* ========================================================== */
 .max-width-text {
   max-width: 700px;
 }
@@ -433,38 +428,12 @@ onMounted(() => {
   opacity: 0;
 }
 
-/* ========================================================== */
-/* FILTRES (MINI-NAVBAR)                                      */
-/* ========================================================== */
-.btn-filter-active {
-  background: #7c3aed !important;
-  color: white !important;
-  border-radius: 6px;
-  font-weight: 500;
-  padding: 4px 16px;
-}
-.btn-filter-inactive {
-  background: rgba(255, 255, 255, 0.05) !important;
-  color: #8a92a3 !important;
-  border-radius: 6px;
-  font-weight: 500;
-  padding: 4px 16px;
-  transition: all 0.3s ease;
-}
-.btn-filter-inactive:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #ffffff !important;
-}
-
-/* ========================================================== */
-/* STYLE DES CARTES ET HOMOGÉNÉISATION DES HAUTEURS           */
-/* ========================================================== */
 .project-card {
   border-radius: 12px;
   background: #111111;
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
-  height: 100%; /* S'assure que la carte prend toute la hauteur de la colonne */
+  height: 100%;
 }
 
 .project-card:hover {
@@ -473,7 +442,6 @@ onMounted(() => {
   border-color: rgba(124, 58, 237, 0.3);
 }
 
-/* Fixer la hauteur de l'image (environ équivalent au ratio 16/9 sur ces largeurs) */
 .image-wrapper {
   height: 200px;
   min-height: 200px;
@@ -494,7 +462,6 @@ onMounted(() => {
   filter: brightness(1);
 }
 
-/* Fixer une hauteur min pour le titre pour gérer les titres sur 1 ou 2 lignes */
 .title-container {
   min-height: 56px;
 }
@@ -502,18 +469,15 @@ onMounted(() => {
   line-height: 1.3;
 }
 
-/* Fixer une hauteur pour la description (3 lignes max) */
 .description-fixed-height {
-  height: 66px; /* Ajuste selon ton line-height, ici 3 lignes * 1.6em */
+  height: 66px;
   margin-bottom: 16px;
 }
 
-/* Fixer une hauteur pour le conteneur de tags */
 .tags-container {
-  min-height: 28px; /* Hauteur d'une rangée de chips */
+  min-height: 28px;
 }
 
-/* Le highlight du titre au survol */
 .project-card:hover .project-title-transition {
   color: #a855f7 !important;
 }
@@ -521,9 +485,6 @@ onMounted(() => {
   transition: color 0.3s ease;
 }
 
-/* ========================================================== */
-/* LABELS EXACTEMENT COMME LE SCREEN                          */
-/* ========================================================== */
 .chip-tech-da {
   background: rgba(124, 58, 237, 0.12) !important;
   color: #a78bfa !important;
@@ -533,9 +494,6 @@ onMounted(() => {
   font-size: 12px;
 }
 
-/* ========================================================== */
-/* BOUTONS ACTIONS (OUTLINED)                                 */
-/* ========================================================== */
 .btn-action-outline {
   border: 1px solid rgba(255, 255, 255, 0.15) !important;
   color: #e2e8f0 !important;
@@ -549,9 +507,6 @@ onMounted(() => {
   border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
-/* ========================================================== */
-/* MODALE DARK TECH                                           */
-/* ========================================================== */
 .modal-dark-tech {
   background: #0b0e14 !important;
   border: 1px solid rgba(255, 255, 255, 0.08);
