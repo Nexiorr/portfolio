@@ -26,7 +26,7 @@
       <div
         v-for="project in filteredProjects"
         :key="project.id"
-        class="col-12 col-sm-6 col-md-4 reveal-projects"
+        class="col-12 col-sm-6 col-md-4 reveal-projects filtered-project-item"
       >
         <q-card
           class="project-card bg-card-dark no-shadow overflow-hidden full-height flex column"
@@ -204,8 +204,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, onMounted } from 'vue';
-import { animate } from 'motion';
+import { ref, computed, onMounted, watch, nextTick } from 'vue';
+import { animate, stagger } from 'motion';
 
 interface Project {
   id: number;
@@ -386,6 +386,20 @@ const filteredProjects = computed(() => {
   return projects.value.filter((p) => p.category.toLowerCase() === currentCategory.value.toLowerCase());
 });
 
+watch(currentCategory, async () => {
+  await nextTick();
+
+  const newCards = document.querySelectorAll('.filtered-project-item');
+
+  if (newCards.length > 0) {
+    animate(
+      newCards,
+      { opacity: [0, 1], y: [40, 0] },
+      { delay: stagger(0.1), duration: 0.5, ease: 'easeOut' }
+    );
+  }
+});
+
 const openDetails = (project: Project) => {
   selectedProject.value = project;
   detailsOpen.value = true;
@@ -530,5 +544,21 @@ onMounted(() => {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.btn-filter-active {
+  background: #7c3aed !important;
+  color: white !important;
+}
+
+.btn-filter-inactive {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #8a92a3 !important;
+  transition: all 0.3s ease;
+}
+
+.btn-filter-inactive:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
 }
 </style>

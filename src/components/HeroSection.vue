@@ -33,7 +33,7 @@
 <script lang="ts" setup>
 import { onMounted } from 'vue'
 import { animate, stagger } from 'motion'
-
+// a
 onMounted(() => {
   animate(
     ".reveal-item",
