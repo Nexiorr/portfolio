@@ -2,26 +2,28 @@
   <section id="home" class="full-height-section hero-glow flex">
     <div class="container-center">
       <div class="hero-content q-px-xl">
-        
-        <div class="badge-available q-mb-xl reveal-item">
-          <q-icon name="auto_awesome" size="sm" class="q-mr-sm text-white" />
-          <span class="text-white text-weight-medium">Available for opportunities</span>
-        </div>
-
         <h1 class="text-h2 text-weight-bold text-white q-mb-sm reveal-item">
           Dylan Zhang
         </h1>
         <h2 class="text-h3 text-weight-bold text-purple-accent q-mb-md reveal-item q-mt-none">
           Future développeur full-stack.
         </h2>
-        
+
         <p class="text-grey-5 text-h6 q-mt-lg max-width-text reveal-item">
           Passionné par la création d'expériences utilisateur exceptionnelles grâce à un code propre et un design réfléchi.
         </p>
 
         <div class="q-mt-xl q-gutter-md reveal-item">
-          <q-btn unelevated class="btn-purple" label="View My Work" icon-right="arrow_forward" no-caps padding="12px 24px" />
-          <q-btn outline color="white" label="Get In Touch" no-caps padding="12px 24px" />
+          <q-btn
+            unelevated
+            class="btn-purple"
+            label="Mon CV"
+            icon-right="file_download"
+            no-caps
+            padding="12px 24px"
+            href="res/CV_Zhang_Dylan.pdf"
+            target="_blank"
+          />
         </div>
       </div>
     </div>
@@ -35,8 +37,8 @@ import { animate, stagger } from 'motion'
 onMounted(() => {
   // Animation d'apparition en cascade (plus propre que l'ancien code)
   animate(
-    ".reveal-item", 
-    { opacity: [0, 1], y: [30, 0] }, 
+    ".reveal-item",
+    { opacity: [0, 1], y: [30, 0] },
     { delay: stagger(0.15), duration: 0.8, ease: "easeOut" }
   )
 })
@@ -80,6 +82,12 @@ onMounted(() => {
   color: white;
   border-radius: 8px;
   font-weight: 600;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+
+.btn-purple:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
 }
 
 .max-width-text {

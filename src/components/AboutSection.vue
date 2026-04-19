@@ -1,51 +1,48 @@
 <template>
   <div class="content-wrapper q-px-xl full-width text-left" style="max-width: 1200px; margin: 0 auto;">
-    
-    <div class="flex items-center q-mb-xl">
-      <div class="section-badge q-mr-md">
-        <q-icon name="person_search" size="xs" class="q-mr-xs" />
-        <span>About Me</span>
-      </div>
+
+    <div class="flex items-center q-mb-xl reveal-about">
       <h3 class="text-h3 text-weight-bold text-white q-my-none">
         Positionnement Professionnel
       </h3>
     </div>
 
     <div class="row q-col-gutter-xl">
-      
+
       <div class="col-12 col-md-6">
-        
-        <div class="q-mb-xl">
+
+        <div class="q-mb-xl reveal-about">
           <h4 class="text-h5 text-weight-bold text-white q-mb-md flex items-center">
             <q-icon name="rocket_launch" color="purple-4" size="sm" class="q-mr-sm"/>
             Mon Profil
           </h4>
           <p class="text-grey-4 line-height-relaxed text-body1">
-            Actuellement en fin de cycle (BUT Informatique), je me positionne comme un <strong>Développeur Full-Stack junior</strong>. 
-            Mon projet professionnel à court terme est d'intégrer une équipe agile où je pourrai consolider mon expertise 
+            Actuellement en fin de cycle (BUT Informatique), je me positionne comme un <strong>Développeur Full-Stack junior</strong>.
+            Mon projet professionnel à court terme est d'intégrer une équipe agile où je pourrai consolider mon expertise
             sur des architectures robustes (Spring Boot / NestJS) et des interfaces modernes, tout en appliquant les bonnes pratiques.
           </p>
         </div>
 
-        <div>
+        <div class="reveal-about">
           <div class="flex justify-between items-end q-mb-md">
             <h4 class="text-h5 text-weight-bold text-white q-my-none flex items-center">
               <q-icon name="laptop_mac" color="purple-4" size="sm" class="q-mr-sm"/>
               Expertise Technique
             </h4>
           </div>
-          
+
           <p class="text-grey-5 text-body2 q-mb-lg italic">
             "Ma stack technique est le reflet des problématiques résolues en stage et en projet. Je privilégie toujours l'outil le plus adapté au besoin."
           </p>
 
-          <div v-for="(category, index) in techStack" :key="index" class="skill-category q-mb-lg">
-            
+          <div class="bento-grid">
+            <div v-for="(category, index) in techStack" :key="index" class="skill-category">
+
             <div class="flex items-center q-mb-sm">
               <q-icon :name="category.icon" color="purple-3" size="sm" class="q-mr-sm" />
               <div class="text-subtitle1 text-white text-weight-bold">{{ category.title }}</div>
             </div>
-            
+
             <p class="text-grey-5 text-caption q-mb-md line-height-relaxed">
               {{ category.context }}
             </p>
@@ -56,24 +53,25 @@
               </div>
             </div>
 
+            </div>
           </div>
         </div>
 
       </div>
 
-      <div class="col-12 col-md-6">
-        
+      <div class="col-12 col-md-6 reveal-about">
+
         <h4 class="text-h5 text-weight-bold text-white q-mb-md flex items-center">
           <q-icon name="psychology" color="purple-4" size="sm" class="q-mr-sm"/>
           Compétences Comportementales
         </h4>
-        
+
         <p class="text-grey-5 text-body2 q-mb-md">
           Au-delà du code, voici les compétences humaines que j'ai développées lors de mes expériences en entreprise et travaux de groupe.
         </p>
 
         <q-list dark bordered class="rounded-borders soft-skills-list bg-transparent">
-          
+
           <q-expansion-item group="softskills" icon="accessibility_new" label="Adaptabilité & Résolution de problèmes" header-class="text-weight-medium text-white" expand-icon-class="text-purple-4">
             <q-card class="bg-transparent">
               <q-card-section class="text-grey-4 text-body2 line-height-relaxed">
@@ -106,14 +104,25 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { animate } from 'motion'
+
+interface TechSkill {
+  name: string;
+}
+
+interface TechCategory {
+  title: string;
+  icon: string;
+  context: string;
+  skills: TechSkill[];
+}
 
 // =========================================================================
 // DONNÉES DE LA STACK TECHNIQUE
 // C'est ici que tu peux facilement modifier/ajouter tes technos !
-// level: de 0.0 à 1.0 (pour la barre de progression)
 // =========================================================================
-const techStack = ref([
+const techStack = ref<TechCategory[]>([
   {
     title: 'Architecture Backend & API',
     icon: 'dns',
@@ -146,6 +155,28 @@ const techStack = ref([
     ]
   }
 ])
+
+onMounted(() => {
+  // Animation d'apparition au scroll pour la section "About"
+  const observer = new IntersectionObserver((entries) => {
+    let delay = 0;
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animate(
+          entry.target,
+          { opacity: [0, 1], y: [40, 0] },
+          { delay: delay, duration: 0.8, ease: "easeOut" }
+        )
+        delay += 0.2;
+        observer.unobserve(entry.target)
+      }
+    })
+  }, { threshold: 0.1 })
+
+  document.querySelectorAll('.reveal-about').forEach((el) => {
+    observer.observe(el)
+  })
+})
 </script>
 
 <style scoped>
@@ -167,19 +198,30 @@ const techStack = ref([
   line-height: 1.7;
 }
 
+.reveal-about {
+  opacity: 0;
+}
+
+/* Grille Bento pour les compétences */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
 /* Style des cartes de compétences */
 .skill-category {
   /* On ajoute une bordure très fine et un fond semi-transparent */
   background: rgba(255, 255, 255, 0.01);
   border: 1px solid rgba(255, 255, 255, 0.03);
   border-left: 3px solid #7C3AED; /* Ta barre violette actuelle */
-  
+
   padding: 16px 20px;
   border-radius: 4px 12px 12px 4px;
-  
+
   /* Ombre portée très diffuse pour la profondeur */
   box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
-  
+
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .skill-category:hover {
@@ -193,6 +235,4 @@ const techStack = ref([
   border-color: rgba(255, 255, 255, 0.08);
   background: rgba(0,0,0,0.2) !important;
 }
-
-
 </style>

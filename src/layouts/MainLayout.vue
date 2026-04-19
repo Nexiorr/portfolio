@@ -16,17 +16,17 @@
       class="bg-sidebar"
     >
       <div class="q-pa-lg full-height flex column">
-        
+
         <div class="text-h6 text-weight-bold q-mb-xl q-mt-md">
           Dylan Zhang
         </div>
 
         <q-list class="nav-list q-gutter-y-sm">
-          <q-item 
-            clickable 
-            v-ripple 
-            active-class="active-nav-item" 
-            :active="activeSection === 'home'" 
+          <q-item
+            clickable
+            v-ripple
+            active-class="active-nav-item"
+            :active="activeSection === 'home'"
             @click="scrollTo('home')"
             class="nav-item rounded-borders"
           >
@@ -36,11 +36,11 @@
             <q-item-section class="text-subtitle2 text-weight-medium">Home</q-item-section>
           </q-item>
 
-          <q-item 
-            clickable 
-            v-ripple 
-            active-class="active-nav-item" 
-            :active="activeSection === 'about'" 
+          <q-item
+            clickable
+            v-ripple
+            active-class="active-nav-item"
+            :active="activeSection === 'about'"
             @click="scrollTo('about')"
             class="nav-item rounded-borders"
           >
@@ -50,11 +50,11 @@
             <q-item-section class="text-subtitle2 text-weight-medium">About</q-item-section>
           </q-item>
 
-          <q-item 
-            clickable 
-            v-ripple 
-            active-class="active-nav-item" 
-            :active="activeSection === 'projects'" 
+          <q-item
+            clickable
+            v-ripple
+            active-class="active-nav-item"
+            :active="activeSection === 'projects'"
             @click="scrollTo('projects')"
             class="nav-item rounded-borders"
           >
@@ -64,11 +64,11 @@
             <q-item-section class="text-subtitle2 text-weight-medium">Projects</q-item-section>
           </q-item>
 
-          <q-item 
-            clickable 
-            v-ripple 
-            active-class="active-nav-item" 
-            :active="activeSection === 'experience'" 
+          <q-item
+            clickable
+            v-ripple
+            active-class="active-nav-item"
+            :active="activeSection === 'experience'"
             @click="scrollTo('experience')"
             class="nav-item rounded-borders"
           >
@@ -76,20 +76,6 @@
               <q-icon name="work_outline" size="sm" />
             </q-item-section>
             <q-item-section class="text-subtitle2 text-weight-medium">Experience</q-item-section>
-          </q-item>
-
-          <q-item 
-            clickable 
-            v-ripple 
-            active-class="active-nav-item" 
-            :active="activeSection === 'contact'" 
-            @click="scrollTo('contact')"
-            class="nav-item rounded-borders"
-          >
-            <q-item-section avatar min-width="40px">
-              <q-icon name="mail_outline" size="sm" />
-            </q-item-section>
-            <q-item-section class="text-subtitle2 text-weight-medium">Contact</q-item-section>
           </q-item>
         </q-list>
       </div>
