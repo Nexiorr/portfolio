@@ -12,8 +12,8 @@
     "test": "echo \"No test specified\" && exit 0",
     "dev": "quasar dev",
     "build": "quasar build",
-    "postinstall": "quasar prepare",
-    "deploy": "gh-pages -d dist/spa"
+    "deploy": "npm run build && gh-pages -d dist/spa --dotfiles",
+    "postinstall": "quasar prepare"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
