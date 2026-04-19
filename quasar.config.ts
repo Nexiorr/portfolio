@@ -49,7 +49,7 @@ export default defineConfig((ctx) => {
       // vueDevtools,
       // vueOptionsAPI: false,
 
-      // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
+      rebuildCache: true, // force le nettoyage du cache de compilation
 
       publicPath: '/portfolio/',
       // analyze: true,
