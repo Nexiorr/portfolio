@@ -6,7 +6,7 @@
           Dylan Zhang
         </h1>
         <h2 class="text-h3 text-weight-bold text-purple-accent q-mb-md reveal-item q-mt-none">
-          Future développeur full-stack.
+          Futur développeur full-stack.
         </h2>
 
         <p class="text-grey-5 text-h6 q-mt-lg max-width-text reveal-item">
